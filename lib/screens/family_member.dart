@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/components/app_colors.dart';
 import 'package:flutter_application_3/components/element.dart';
-
-// ignore: must_be_immutable
-class FamilyMemmberListElement extends ListElement {
-    late ListMemmber data;
-    FamilyMemmberListElement({
-        super.key, 
-        required this.data
-        }) : super(
-            textEng: data.enName,
-            textJap: data.jpName,
-            imageName: data.image,
-            backGroungColor: const Color(0xff558B37) ,
-        );
-    
-    @override
-    Widget build(BuildContext context) {
-        return super.build(context);
-    }
-}
 
 class FamilyMemmberView extends StatelessWidget {
     const FamilyMemmberView({super.key});
@@ -28,46 +10,55 @@ class FamilyMemmberView extends StatelessWidget {
         jpName: 'chich',
         enName: 'father',
         image: 'assets/images/family_members/family_father.png',
+        sound: 'sound/family_members/father.wav',
         ),
         ListMemmber(
         jpName: 'Musume',
         enName: 'daughter',
-        image: 'assets/images/family/family_daughter.jpg',
+        image: 'assets/images/family_members/family_daughter.png',
+        sound: 'sound/family_members/daughter.wav',
         ),
         ListMemmber(
         jpName: 'Sofu',
         enName: 'Grandfather',
         image: 'assets/images/family_members/family_grandfather.png',
+        sound: 'sound/family_members/grand father.wav',
         ),
         ListMemmber(
         jpName: 'Sobo',
         enName: 'Grandmother',
         image: 'assets/images/family_members/family_grandmother.png',
+        sound: 'sound/family_members/grand mother.wav',
         ),
         ListMemmber(
         jpName: 'Ani',
         enName: 'Older Brother',
         image: 'assets/images/family_members/family_older_brother.png',
+        sound: 'sound/family_members/older bother.wav',
         ),
         ListMemmber(
         jpName: 'Ane',
         enName: 'Older Sister',
         image: 'assets/images/family_members/family_older_sister.png',
+        sound: 'sound/family_members/older sister.wav',
         ),
         ListMemmber(
         jpName: 'Musuko',
         enName: 'Son',
         image: 'assets/images/family_members/family_son.png',
+        sound: 'sound/family_members/son.wav',
         ),
         ListMemmber(
         jpName: 'Otōto',
         enName: 'younger brother',
         image: 'assets/images/family_members/family_younger_brother.png',
+        sound: 'sound/family_members/younger brohter.wav',
         ),
         ListMemmber(
         jpName: 'Imōto',
         enName: 'younger sister',
         image: 'assets/images/family_members/family_younger_sister.png',
+        sound: 'sound/family_members/youngr sister.wav',
         ),
     ];
     
@@ -81,7 +72,7 @@ class FamilyMemmberView extends StatelessWidget {
             body: ListView.builder(
                 itemCount: family.length,
                 itemBuilder: (BuildContext context, int index) {
-                    return FamilyMemmberListElement(data: family[index]);
+                    return ListElement(data: family[index], backGroundColor: TokuAppColors.familyColor,);
                 },
             ),
         );

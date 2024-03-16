@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/components/app_colors.dart';
+import 'package:flutter_application_3/components/element.dart';
+import 'package:flutter_application_3/screens/Colors.dart';
+import 'package:flutter_application_3/screens/Phrases.dart';
 import 'package:flutter_application_3/screens/family_member.dart';
 import 'number_page.dart';
 
@@ -17,23 +21,25 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                     ) ,
                 ),
+            
             body: Center(
                 child: Column(
                     children: [
                         // to Numbers screen 
                         Category(
                             text:'Numbers', 
-                            backGroundColor: const Color(0xffEF9235),
+                            backGroundColor: TokuAppColors.numbersColor,
                             onTap: () =>  Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => const Numbers(),
-                                )
+                                ),
                             ),
+                            
                             ),
                         // to the  Family memmber screen
                         Category(
                             text:'Family Memmber',
-                            backGroundColor: const Color(0xff558B37),
+                            backGroundColor: TokuAppColors.familyColor,
                             onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => const FamilyMemmberView(),
@@ -41,9 +47,21 @@ class HomePage extends StatelessWidget {
                             ),
                             ),
                         //colors screen
-                        Category(text:'Colors',  backGroundColor: const Color(0xff79359F)),
+                        Category(
+                            text:'Colors',  
+                            backGroundColor: TokuAppColors.colorScreenColor,
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => const ColorsView() )
+                            ),
+                            ),
                         //pharses screen
-                        Category(text:'Phrases',  backGroundColor: const Color(0xff50ADC7))
+                        Category(
+                            text:'Phrases',  
+                            backGroundColor:  TokuAppColors.phrasesColor,
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => const PhrasesView())
+                            ),
+                            )
                     ]
             ),
             ),
@@ -52,33 +70,3 @@ class HomePage extends StatelessWidget {
 }
 
 
-// ignore: must_be_immutable
-class Category extends StatelessWidget {
-    late String text;
-    late Color backGroundColor;
-    Function()? onTap;
-    
-    Category({super.key, required this.text , required this.backGroundColor, this.onTap});
-
-    @override
-    Widget build(BuildContext context) {
-        return   
-        GestureDetector(
-            onTap: onTap,
-            child: Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 24),
-                height: 65,
-                width: double.infinity, // to have all the scren container
-                color:  backGroundColor,
-                child:  Text(
-                text,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    ),
-                    ),
-            ),
-        );
-    }
-}
